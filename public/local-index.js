@@ -1,36 +1,24 @@
-function previewImage(event) {
-  var preview = document.getElementById('imagePreview');
-  var file = event.target.files[0];
-  var reader = new FileReader();
-
-  reader.onload = function () {
-      preview.src = reader.result;
-      document.getElementById('imageContainer').style.display = 'block';
-  }
-
-  if (file) {
-      reader.readAsDataURL(file);
-  }
-}
-
-function submitToDB(event) {
+async function submitToDB(event) {
   event.preventDefault();
   let confirmation = confirm("Confirm submit to MongoDB?");
   if (confirmation) {
-      const formData = new FormData();
       const fileInput = document.getElementById('myFile');
+      const formData = new FormData();
       formData.append('file', fileInput.files[0]);
 
-      fetch('/saveImage', {
-          method: 'POST',
-          body: formData
-      })
-      .then(response => response.text())
-      .then(data => {
-          alert(data);
-      })
-      .catch(error => {
+      try {
+          const response = await fetch('/saveImage', {
+              method: 'POST',
+              body: formData
+          });
+          const data = await response.json();
+          const imageContainer = document.getElementById('imageContainer');
+          const imagePreview = document.getElementById('imagePreview');
+          imagePreview.src = data.imageSrc;
+          imageContainer.style.display = 'block';
+          alert(data.message);
+      } catch (error) {
           console.error('Error:', error);
-      });
+      }
   }
 }

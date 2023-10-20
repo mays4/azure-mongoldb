@@ -11,8 +11,8 @@
 <body>
     <p>Click on the "Choose File" button to upload a file:</p>
 
-    <form action="/saveImage" id="uploadForm">
-        <input type="file" id="myFile" name="file" accept="image/*" onchange="previewImage(event)">
+    <form action="/saveImage" id="uploadForm" enctype="multipart/form-data">
+        <input type="file" id="myFile" name="file" accept="image/*">
         <button type="submit" onclick="submitToDB(event)">Submit</button>
     </form>
     <div id="imageContainer" style="display: none;">
