@@ -2,24 +2,24 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Upload a photo</title>
-    <link rel="stylesheet" href="index.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload a photo</title>
+  <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
-    <p>Click on the "Choose File" button to upload a file:</p>
+  <p>Click on the "Choose File" button to upload a file:</p>
 
-    <form action="/saveImage" id="uploadForm" enctype="multipart/form-data">
-        <input type="file" id="myFile" name="file" accept="image/*">
-        <button type="submit" onclick="submitToDB(event)">Submit</button>
-    </form>
-    <div id="imageContainer" style="display: none;">
-        <p>Image Preview:</p>
-        <img src="" alt="photo" id="imagePreview" width="400" height="400">
-    </div>
-    <script src="./local-index.js"></script>
+  <form action="/saveImage" id="uploadForm" enctype="multipart/form-data">
+    <input type="file" id="myFile" name="file" accept="image/*">
+    <button type="submit" onclick="submitToDB(event)">Submit</button>
+  </form>
+  <div id="imageContainer" style="display: none;">
+    <p>Image Preview:</p>
+    <img src="" alt="photo" id="imagePreview">
+  </div>
+  <script src="./local-index.js"></script>
 </body>
 
 </html>
